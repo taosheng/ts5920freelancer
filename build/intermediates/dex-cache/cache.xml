@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/chentaosheng/AndroidStudioProjects/TS5920/app/libs/aws-android-sdk-cognito-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="da8389b0a1f6b35e017412716eafc343790ca5f2">
+        <dex dex="/Users/chentaosheng/AndroidStudioProjects/TS5920/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.2.5-4b758a1349dfab90130d6208d24d845df5f210d3.jar" />
+    </item>
+
+</items>
