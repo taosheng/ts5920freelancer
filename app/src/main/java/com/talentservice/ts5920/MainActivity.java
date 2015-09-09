@@ -24,7 +24,14 @@ import android.app.AlertDialog;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    // 1: the target name didn't existing in any place
+    // 2: the target existed in other uid
+    // 3: the target existed in this uid
+    // 4: error
+    public static final int NO_SUCH_TARGETNAME = 1;
+    public static final int OTHER_UID_HAS_TARGETNAME = 2;
+    public static final int THIS_UID_HAS_TARGETNAME =3;
+    public static final int UNKNOW_TARGET_STATUS=4;
 
     DynamodbClient dc = new DynamodbClient();
     //String androidId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -81,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected Boolean doInBackground(String... params) {
 
-            String targetnameString = targetname.getText().toString();
+            String targetnameString = targetname.getText().toString().trim();
             String descString = desc.getText().toString();
             String fromnameString = fromname.getText().toString();
             dc.putItem(androidId, targetnameString, descString,fromnameString);
@@ -94,33 +101,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setTargetUrl(targetname.getText().toString());
         }
     }
-    private class Check5920 extends AsyncTask<String, Integer, Boolean> {
+    private class Check5920 extends AsyncTask<String, Integer, Integer> {
+        // 1: the target name didn't existing in any place
+        // 2: the target existed in other uid
+        // 3: the target existed in this uid
+        // 4: error
+
         DynamodbClient.TS5920Item tsItem ;
 
         protected void onProgressUpdate(Integer... progress) {
             //setProgressPercent(progress[0]);
         }
 
+
         @Override
-        protected Boolean doInBackground(String... params) {
+        protected Integer doInBackground(String... params) {
             try{
-                if(dc.existingTarget(params[0])){
-                    tsItem = dc.getItemByUid(params[0]);
-                    return true;
+                String targetNameParam = params[0];
+
+                if(dc.existingTarget(targetNameParam)){
+                    DynamodbClient.TS5920Item checkTargetItem = dc.getItemByTarget(targetNameParam);
+                    tsItem = dc.getItemByUid(androidId);
+                    if (tsItem.getUid().equals(checkTargetItem.getUid())){
+                        return THIS_UID_HAS_TARGETNAME;
+                    }else{
+                        return OTHER_UID_HAS_TARGETNAME;
+                    }
+
+                }else{
+                    return NO_SUCH_TARGETNAME;
                 }
             }catch (Exception e){
-                return false;
+                return UNKNOW_TARGET_STATUS;
             }
-            return false;
 
 
         }
+        // 1: the target name didn't existing in any place
+        // 2: the target existed in other uid
+        // 3: the target existed in this uid
+        // 4: error
+        //static int NO_SUCH_TARGETNAME = 1;
+        //static int OTHER_UID_HAS_TARGETNAME = 2;
+        //static int THIS_UID_HAS_TARGETNAME =3;
+        //static int UNKNOW_TARGET_STATUS=4;
+        protected void onPostExecute(Integer result) {
+            switch(result){
+                case NO_SUCH_TARGETNAME :{
+                    break;
+                }
+                case OTHER_UID_HAS_TARGETNAME:{
+                    break;
+                }
+                case THIS_UID_HAS_TARGETNAME: {
+                    setTargetUrl(tsItem.getTarget());
+                    break;
+                }
+                case UNKNOW_TARGET_STATUS: {
+                    break;
+                }
 
-        protected void onPostExecute(Boolean result) {
-
-            if(result){
-                setTargetUrl(tsItem.getTarget());
             }
+
 
         }
     }
@@ -194,37 +236,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         theurl.setText(Html.fromHtml("<a href=\"" + targeturl + "\" >" + targeturl + " </a>"));
         theurl.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
+    // 1: the target name didn't existing in any place
+    // 2: the target existed in other uid
+    // 3: the target existed in this uid
+    // 4: error
+//    static int NO_SUCH_TARGETNAME = 1;
+ //   static int OTHER_UID_HAS_TARGETNAME = 2;
+ //   static int THIS_UID_HAS_TARGETNAME =3;
+ //   static int UNKNOW_TARGET_STATUS=4;
+
     public void onClick(View v) {
         switch (v.getId()) {
             case  R.id.ok: {
-
+                errormsg.setText("");
                 String targetnameString = targetname.getText().toString();
                 String descString = desc.getText().toString();
                 String fromnameString = fromname.getText().toString();
                 Check5920 check5920 = new Check5920();
                 try {
-                    if ( !check5920.execute(targetnameString, null, null).get()) {
+                        Integer checkResult = check5920.execute(targetnameString.trim(), null, null).get();
+                        switch (checkResult){
 
-                        FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-                        if (prev != null) {
-                            ft.remove(prev);
+                            case NO_SUCH_TARGETNAME: {// target is never existing
+
+                                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                                if (prev != null) {
+                                    ft.remove(prev);
+                                }
+                                ft.addToBackStack(null);
+
+                                // Create and show the dialog.
+                                IfOverwriteFragment ifOverwriteFragment;
+                                ifOverwriteFragment = new IfOverwriteFragment();
+                                ifOverwriteFragment.show(ft, "dialog");
+
+                                break;
+                            }
+                            case OTHER_UID_HAS_TARGETNAME: {// target is the same as other uid?!
+                                errormsg.setText(R.string.somebody_first);
+                                Reload5920 asyncUpdateLatest5920 = new Reload5920();
+                                asyncUpdateLatest5920.execute(this.androidId, null, null);
+                                break;
+                            }
+                            case THIS_UID_HAS_TARGETNAME: { // target is the same in this uid only
+                                Update5920 update5920 = new Update5920();
+                                update5920.execute(this.androidId, null, null);
+
+                                break;
+                            }
+                            case UNKNOW_TARGET_STATUS:{
+                                errormsg.setText(R.string.something_wrong+"unknow");
+                                break;
+                            }
                         }
-                        ft.addToBackStack(null);
-
-                        // Create and show the dialog.
-                        IfOverwriteFragment ifOverwriteFragment = new IfOverwriteFragment();
-                        ifOverwriteFragment.show(ft, "dialog");
 
 
-                    } else {
-                        Update5920 update5920 = new Update5920();
-                        update5920.execute(this.androidId, null, null);
-                    }
+
+
                 }catch(Exception e ){
                     //alert!!
                     e.printStackTrace();
-                    errormsg.setText(R.string.something_wrong);
+                    errormsg.setText(R.string.something_wrong+e.getMessage());
                 }
 
 

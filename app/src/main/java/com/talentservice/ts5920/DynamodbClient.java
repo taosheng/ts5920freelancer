@@ -38,7 +38,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 public class DynamodbClient{
 
 
-    static BasicAWSCredentials bac = new BasicAWSCredentials("AKIAJZSJBGVWJOFLZQGQ","zbdE/pczscs8xFDRWU4aGJ0Z4JWzSmGlrzp2A9In");
+    static BasicAWSCredentials bac = new BasicAWSCredentials("NOSUCHAUTH","NOSUCHAUTH");
     static DynamoDBMapper mapper = new DynamoDBMapper(new AmazonDynamoDBClient(bac));
 
 	public static void println(Object msg){
@@ -94,6 +94,27 @@ public class DynamodbClient{
 		//}else{
 		//	return null;
 		//}
+
+	}
+	public TS5920Item getItemByTarget(String target){
+
+		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+
+		Map<String, Condition> scanFilter = new HashMap<String, Condition>();
+
+		// Condition1: DeviceId
+		Condition scanCondition = new Condition()
+				.withComparisonOperator(ComparisonOperator.EQ.toString())
+				.withAttributeValueList(new AttributeValue().withS(target));
+		scanFilter.put("target", scanCondition);
+		scanExpression.setScanFilter(scanFilter);
+
+		List<TS5920Item> results = mapper.scan(TS5920Item.class, scanExpression);
+		if (results.size() > 0){
+			return results.get(0);
+		}else{
+			return null;
+		}
 
 	}
 	public boolean existingTarget(String target){

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">用網址來告白</string>
+    <string name="app_name">限量網址告白</string>
     <string name="description_desc">想說的話：</string>
     <string name="description_from">你的名字：</string>
     <string name="description_target">告白對象：</string>
     <string name="edit_target">告白對象：</string>
     <string name="app_desc">網址告白是嚴肅的！你一次只能選一個告白名字，而且如果已經有人捷足先登，你就暫時不能跟她/他告白。以下請輸入告白對象名字，你想說的話，以及你的名字</string>
+    <string name="action_settings">Settings</string>
+    <string name="dialog_overwrite">確定要改告別對象名稱？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="no_network">請檢查網路連線是否正常</string>
+    <string name="something_wrong">系統有問題！請重新啟動程式！</string>
+    <string name="somebody_first">抱歉！已經有人先對你的告白對象行動了！網址是獨一無二，你得等！</string>
+
 </resources>

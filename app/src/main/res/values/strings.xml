@@ -11,4 +11,5 @@
     <string name="no">NO</string>
     <string name="no_network">Please make sure you have 3G or wifi</string>
     <string name="something_wrong">Please turn off APP and try again</string>
+    <string name="somebody_first">Sorry, somebody already try to go after your target! you have to wait!</string>
 </resources>
