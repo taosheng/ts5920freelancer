@@ -1,5 +1,9 @@
 package com.talentservice.ts5920;
 
+/**
+ * Created by doug on 9/3/15.
+ */
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,7 +38,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 public class DynamodbClient{
 
 
-    static BasicAWSCredentials bac = new BasicAWSCredentials("NOSUCHKEY","NOSUCHAUTH");
+    static BasicAWSCredentials bac = new BasicAWSCredentials("AKIAJZSJBGVWJOFLZQGQ","zbdE/pczscs8xFDRWU4aGJ0Z4JWzSmGlrzp2A9In");
     static DynamoDBMapper mapper = new DynamoDBMapper(new AmazonDynamoDBClient(bac));
 
 	public static void println(Object msg){

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">用網址來告白</string>
-    <string name="description_desc">你想說的話</string>
-    <string name="description_from">你的名字(可以不填)</string>
-    <string name="description_target">告白對象的名字(很重要 慎選)</string>
-    <string name="edit_target">告白對象的名字(很重要 慎選)</string>
-    <string name="text_app_description">網址告白是嚴肅的！你一次只能選一個告白名字，而且如果已經有人捷足先登，你就暫時不能跟她/他告白。以下請輸入告白對象名字，你想說的話，以及你的名字</string>
+    <string name="description_desc">想說的話：</string>
+    <string name="description_from">你的名字：</string>
+    <string name="description_target">告白對象：</string>
+    <string name="edit_target">告白對象：</string>
+    <string name="app_desc">網址告白是嚴肅的！你一次只能選一個告白名字，而且如果已經有人捷足先登，你就暫時不能跟她/他告白。以下請輸入告白對象名字，你想說的話，以及你的名字</string>
 </resources>

@@ -3,10 +3,12 @@
 
     <string name="app_desc">Limitation Service!!! You can only confess ONE lover in one time!!!</string>
     <string name="action_settings">Settings</string>
-    <string name="description_target">Your lover\'s name here</string>
-    <string name="description_desc">Your words here</string>
-    <string name="description_from">Your name here</string>
+    <string name="description_target">lover\'s name:</string>
+    <string name="description_desc">Your words:</string>
+    <string name="description_from">Your name:</string>
     <string name="dialog_overwrite">Do you want to change confess target?!?!</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="no_network">Please make sure you have 3G or wifi</string>
+    <string name="something_wrong">Please turn off APP and try again</string>
 </resources>

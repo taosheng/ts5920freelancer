@@ -7,13 +7,13 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.app.AlertDialog;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText desc ;
     EditText fromname ;
     TextView theurl ;
+    TextView errormsg;
 
-    private class Reload5920 extends AsyncTask<String, Integer, Integer> {
+    private class Reload5920 extends AsyncTask<String, Integer, Boolean> {
         DynamodbClient.TS5920Item tsItem ;
 
         protected void onProgressUpdate(Integer... progress) {
@@ -42,20 +44,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         @Override
-        protected Integer doInBackground(String... params) {
-            if(dc.existingUID(params[0])){
-                tsItem = dc.getItemByUid(params[0]);
-
+        protected Boolean doInBackground(String... params) {
+            try{
+                if(dc.existingUID(params[0])){
+                    tsItem = dc.getItemByUid(params[0]);
+                    return true;
+                }
+            }catch (Exception e){
+                return false;
             }
-            return null;
+            return false;
         }
 
-        protected void onPostExecute(Integer result) {
+        protected void onPostExecute(Boolean result) {
+            if(result){
+                targetname.setText(tsItem.getTarget());
+                desc.setText(tsItem.getDesc());
+                fromname.setText(tsItem.getFrom());
+                setTargetUrl(tsItem.getTarget());
 
-            targetname.setText(tsItem.getTarget());
-            desc.setText(tsItem.getDesc());
-            fromname.setText(tsItem.getFrom());
-            setTargetUrl(tsItem.getTarget());
+            }else{
+                errormsg.setText(R.string.no_network);
+
+            }
         }
     }
 
@@ -92,20 +103,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         protected Boolean doInBackground(String... params) {
-            if(dc.existingTarget(params[0])){
-                //tsItem = dc.getItemByUid(params[0]);
-                return true;
-            }else{
+            try{
+                if(dc.existingTarget(params[0])){
+                    tsItem = dc.getItemByUid(params[0]);
+                    return true;
+                }
+            }catch (Exception e){
                 return false;
-
             }
+            return false;
+
 
         }
 
-        protected void onPostExecute(Long result) {
+        protected void onPostExecute(Boolean result) {
 
+            if(result){
+                setTargetUrl(tsItem.getTarget());
+            }
 
-            setTargetUrl(tsItem.getTarget());
         }
     }
 
@@ -139,11 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         TelephonyManager tMgr = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
         this.androidId = tMgr.getLine1Number();
-         targetname = ((EditText)findViewById(R.id.edit_target));
-         desc = ((EditText)findViewById(R.id.edit_desc));
-         fromname = ((EditText)findViewById(R.id.edit_from));
-         theurl = (TextView)findViewById(R.id.theurl);
-        //check if the phone number exists
 
 
         setContentView(R.layout.activity_main);
@@ -159,12 +170,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         desc = ((EditText)findViewById(R.id.edit_desc));
         fromname = ((EditText)findViewById(R.id.edit_from));
         theurl = (TextView)findViewById(R.id.theurl);
+        errormsg = (TextView)findViewById(R.id.errormsg);
         okButton.setOnClickListener(this);
 
+        try {
+            Reload5920 asyncUpdateLatest5920 = new Reload5920();
+            asyncUpdateLatest5920.execute(this.androidId, null, null);
 
-        Reload5920 asyncUpdateLatest5920 = new Reload5920();
-        asyncUpdateLatest5920.execute(this.androidId, null, null);
+            if (asyncUpdateLatest5920.get() == null) {
+                errormsg.setText(R.string.no_network);
 
+            }
+        }catch (Exception e){
+            errormsg.setText(R.string.no_network);
+        }
 
         return true;
     }
@@ -205,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }catch(Exception e ){
                     //alert!!
                     e.printStackTrace();
+                    errormsg.setText(R.string.something_wrong);
                 }
 
 
@@ -223,9 +243,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        // if (id == R.id.action_settings) {
+        //    return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
