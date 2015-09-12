@@ -3,98 +3,141 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/all_background"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:gravity="center"
         >
         <TextView
             android:id="@+id/text_app_description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="40px"
+            android:textSize="30px"
+            android:textStyle="bold"
+            android:alpha="0.50"
+            android:textColor="#000000"
             android:text="@string/app_desc"/>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="1dp"
+            >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             >
             <TextView
                 android:id="@+id/text_for_target"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="40px"
-                android:text="@string/description_target"/>
+                android:textStyle="bold"
+                android:text="@string/description_target"
+                android:textColor="#ff0000"
+                android:alpha="0.70"/>
             <EditText android:id="@+id/edit_target"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:singleLine="true"
-                android:layout_margin="10sp"
-                android:maxLength="18" />
+                android:maxLength="18"
+                android:textColor="#000000"
+                android:textSize="50px"
+                android:background="#ffffff"
+                android:alpha="0.50" />
 
         </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
         >
         <TextView
             android:id="@+id/text_for_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40px"
-            android:text="@string/description_desc"/>
+            android:textStyle="bold"
+            android:text="@string/description_desc"
+            android:textColor="#ff0000"
+            android:alpha="0.70"/>
         <EditText android:id="@+id/edit_desc"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:hint=""
         android:maxLength="128"
-        />
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:background="#ffffff"
+            android:alpha="0.50" />
         </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
         >
         <TextView
             android:id="@+id/text_for_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="40px"
-            android:text="@string/description_from"/>
+            android:textStyle="bold"
+            android:text="@string/description_from"
+            android:textColor="#ff0000"
+            android:alpha="0.70"/>
         <EditText android:id="@+id/edit_from"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:hint=""
-            android:layout_margin="10sp"
             android:singleLine="true"
-            android:maxLength="18" />
+            android:maxLength="18"
+            android:textColor="#000000"
+            android:textSize="50px"
+            android:background="#ffffff"
+            android:alpha="0.50"
+            />
     </LinearLayout>
         <TextView  android:id="@+id/theurl"
             android:layout_width="fill_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:linksClickable="true"
-            android:textSize="50px"
-            android:text="Web site"/>
+            android:textSize="40px"
+            android:textStyle="bold"
+            android:text="Web site"
+            android:layout_marginTop="5dp"/>
         <TextView  android:id="@+id/errormsg"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:linksClickable="true"
-            android:textSize="30px"
+            android:textSize="20px"
+            android:textColor="#000000"
             android:text=""/>
         <Button
             android:id="@+id/ok"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="OK" />
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="CONFESS"
+            android:textColor="#ffffff"
+            android:textSize="30dp"
+            android:alpha="0.70"
+            android:background="@drawable/mybuttonstylefile"/>
 
+    </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

@@ -2,11 +2,88 @@
 <items version="2" >
 
     <item
-        jar="/Users/chentaosheng/AndroidStudioProjects/TS5920/app/libs/aws-android-sdk-cognito-2.2.5.jar"
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-ddb-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="291c9e02eb08cbe57875687f7f93f8be4419500f">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-ddb-2.2.5-21e1320109a5d2813ecb080010793d19aee40a5c.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-elb-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f7901edcff52f405bdb5cd1b0637aa3cf4025ea7">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-elb-2.2.5-93d8d4edc526fecd239619d9c9bd0484232776fb.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-144693774965f23f4558c96a4f2fd80c20ff3098.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-cognito-2.2.5.jar"
         jumboMode="false"
         revision="23.0.0"
         sha1="da8389b0a1f6b35e017412716eafc343790ca5f2">
-        <dex dex="/Users/chentaosheng/AndroidStudioProjects/TS5920/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.2.5-4b758a1349dfab90130d6208d24d845df5f210d3.jar" />
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-cognito-2.2.5-d2bdb28ab221a60c022f5d82ffbff75cedb74cce.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\classes-d19e4a3a9ff92a153f34d81ee4328afc86f87855.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-lambda-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f12f89c79fe7a7b714f0a062095031424d769c65">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-lambda-2.2.5-ce780e9d94fdde5699b95f6c5468205167060833.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-mobileanalytics-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="c3385f49232b07d418a6caecad3d6b0d514510e8">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-mobileanalytics-2.2.5-87e7520a7fa6e71dbf6f2e2b7bbf54323bf6de65.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\classes-76e98c5241d883405ec7aa377e457d945cfd6b52.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-sdb-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="96c47cba877bdb91dc4d4600fbb097b34bafc554">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-sdb-2.2.5-d576d392dca26415bda8fcba9804aef2c4987df5.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-core-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="ccd427b798b68d6add14c1926e987903b6d762b3">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-core-2.2.5-cefc8942f7784f800c3e03a0780933116908a247.jar" />
+    </item>
+    <item
+        jar="C:\Users\Praduman\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-b154226f77a0d99c4900593c9af9a2c50292b3f4.jar" />
+    </item>
+    <item
+        jar="D:\UpWork\Android\ts5920freelancer\app\libs\aws-android-sdk-ddb-mapper-2.2.5.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="274d278d741237f41e453ec10d5aab4e4794eb4c">
+        <dex dex="D:\UpWork\Android\ts5920freelancer\app\build\intermediates\pre-dexed\debug\aws-android-sdk-ddb-mapper-2.2.5-dd1b9b504d05f985378770cd2b58e0231e3700f0.jar" />
     </item>
 
 </items>
