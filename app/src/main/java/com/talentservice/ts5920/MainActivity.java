@@ -17,11 +17,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // 1: the target name didn't existing in any place
@@ -46,8 +51,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private class Reload5920 extends AsyncTask<String, Integer, Boolean> {
         DynamodbClient.TS5920Item tsItem ;
 
+
+
         protected void onProgressUpdate(Integer... progress) {
             //setProgressPercent(progress[0]);
+
+            /**
+             * Sample Code added by Praduman for the new spinner, you can uncomment it to use it.
+             * you can add another array in spinner.
+             *
+             * String [] sampleArray = {"Item one","Item two","Item three"};
+             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+             mainActivitySpinner.setAdapter(adapter);
+             */
+
         }
 
         @Override
@@ -83,6 +103,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         protected void onProgressUpdate(Integer... progress) {
             //setProgressPercent(progress[0]);
+
+
+            /**
+             * Sample Code added by Praduman for the new spinner ,you can uncomment it to use it.
+             * you can add a different array in the spinner
+             *
+             * String [] sampleArray = {"Item one","Item two","Item three"};
+             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+             mainActivitySpinner.setAdapter(adapter);
+             */
         }
 
         @Override
@@ -111,6 +144,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         protected void onProgressUpdate(Integer... progress) {
             //setProgressPercent(progress[0]);
+
+
+            /**
+             * Sample Code added by Praduman for the new spinner,you can uncomment it to use it.
+             * you can add a different array in the spinner
+             *
+              *String [] sampleArray = {"Item one","Item two","Item three"};
+             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+             mainActivitySpinner.setAdapter(adapter);
+             */
         }
 
 
