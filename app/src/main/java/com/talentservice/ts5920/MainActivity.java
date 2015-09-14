@@ -57,16 +57,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //setProgressPercent(progress[0]);
 
             /**
-             * Sample Code added by Praduman for the new spinner, you can uncomment it to use it.
+             * Sample Code added by Praduman for the new spinner.
              * you can add another array in spinner.
-             *
-             * String [] sampleArray = {"Item one","Item two","Item three"};
-             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             **/
+             String [] spinnerArray = {"Item one","Item two","Item three"};
+             List<String> spinnerArrayList = Arrays.asList(spinnerArray);
              Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
-             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, spinnerArrayList);
              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
              mainActivitySpinner.setAdapter(adapter);
-             */
+
 
         }
 
@@ -106,16 +106,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             /**
-             * Sample Code added by Praduman for the new spinner ,you can uncomment it to use it.
-             * you can add a different array in the spinner
-             *
-             * String [] sampleArray = {"Item one","Item two","Item three"};
-             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             * Sample Code added by Praduman for the new spinner.
+             * you can add a different array in the spinner.
+             **/
+             String [] spinnerArray = {"Item one","Item two","Item three"};
+             List<String> spinnerArrayList = Arrays.asList(spinnerArray);
              Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
-             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, spinnerArrayList);
              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
              mainActivitySpinner.setAdapter(adapter);
-             */
+
         }
 
         @Override
@@ -147,16 +147,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             /**
-             * Sample Code added by Praduman for the new spinner,you can uncomment it to use it.
+             * Sample Code added by Praduman for the new spinner.
              * you can add a different array in the spinner
-             *
-              *String [] sampleArray = {"Item one","Item two","Item three"};
-             List<String> sampleArrayList = Arrays.asList(sampleArray);
+             **/
+              String [] spinnerArray = {"Item one","Item two","Item three"};
+             List<String> spinnerArrayList = Arrays.asList(spinnerArray);
              Spinner mainActivitySpinner = (Spinner) findViewById(R.id.mainActivitySpinner);
-             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, sampleArrayList);
+             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, spinnerArrayList);
              adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
              mainActivitySpinner.setAdapter(adapter);
-             */
+
         }
 
 
